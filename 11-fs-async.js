@@ -1,6 +1,8 @@
 // File System(fs) module sync or async. For now we do ASYNC
+// User is not blocked from the read.
 const { readFile, writeFile } = require('fs');
 
+console.log('start');
 // We show callback hell here - because we need to wait for each one to finish to then execute the callback.
 readFile('./content/first.txt', 'utf8', (err, result) => {
     if (err) {
@@ -24,7 +26,9 @@ readFile('./content/first.txt', 'utf8', (err, result) => {
                 return;
             }
 
+            console.log('done with this task')
         })
-
     })
 })
+
+console.log('starting with next task');
